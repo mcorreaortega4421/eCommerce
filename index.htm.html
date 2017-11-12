@@ -1,0 +1,168 @@
+<!doctype html>
+    <html>
+        <head>
+            <title>Good Foods</title>
+
+            <style>
+            img {
+                    width: 300px;
+                     }
+            button{
+                padding: 15px 25px;
+                outline: none;
+                box-shadow: 0 9px gray;
+                border-radius: 15px;
+            }
+            h3{
+                letter-spacing:20px; 
+                color:maroon; 
+                font-family: Verdana;
+                font-size: 60px;
+                text-align: center;
+                
+            }
+            p{
+                font-size: 20px;
+                color: white;
+            }
+            h1{
+                font-family: 'Franklin Gothic Medium';
+                color: white
+            }
+            body{
+                text-align: center;
+                background-color: rgb(37, 18, 18);
+                color: white;
+            } 
+            div1{
+                letter-spacing:20px; 
+                color:aqua; 
+                font-family: Verdana;
+                font-size: 60px;
+                text-align: center;
+            }
+                
+
+            </style>
+    
+            <script> 
+                function purchase() {
+                    
+                    var item1 = 10
+                    var item2 = 10
+                    var item3 = 10
+                    var quantity1 = document.getElementById ("quantity1");
+                    var quantity2 = document.getElementById ("quantity2");
+                    var quantity3 = document.getElementById ("quantity3");
+                    var output = document.getElementById("output");
+                    var subtotal1 = item1 * parseInt (quantity1.value)
+                    var subtotal2 = item2 * parseInt(quantity2.value) 
+                    var subtotal3 = item3 * parseInt(quantity3.value)
+                    var subtotal4 = subtotal1 + subtotal2 + subtotal3;
+                    var tax = subtotal4 * .0875; 
+
+                    var shipping
+                    if(subtotal4 <= 30){
+                        shipping = 10 
+                    }else if (subtotal4 <=50 && total >30){
+                        shipping = 5
+                    }else{
+                        shipping = 0
+                    }
+                    
+                    var total = subtotal4 + shipping + tax;
+                    
+                    
+                    function repeatString (string, quantity){
+                        var rs = "";
+                        while(quantity > 0){
+                            rs += string;
+                            quantity--;
+                            }  
+                            return rs;    
+                    }
+                    
+                    x = repeatString("Belgium Bread = $10 <br> + <br>", quantity1.value);
+                    y = repeatString("Raisin Bread = $10 <br> + <br>", quantity2.value);
+                    z = repeatString("Nutella = $10 <br> + <br>", quantity3.value);
+
+                    var build = "__________________________ <br>"
+                    build += " Receipt <br><br>";
+                    
+                    build += x + y + z;
+
+                    build += "Tax = " + tax + " <br> + <br>";
+                    build += "Shipping = " + shipping + "<br>";
+                    build += "___________________________<br>";
+                    build += "Total: " + total.toFixed(2);
+                
+
+            
+
+                    var wholesale1 = item1 - 5;
+                    var wholesale2 = item2 - 5;
+                    var wholesale3 = item3 - 5;
+                    var part1 = wholesale1 * parseInt (quantity1.value);
+                    var part2 = wholesale2 * parseInt (quantity2.value);
+                    var part3 = wholesale3 * parseInt (quantity3.value);
+                    var profit =  part1 + part2 + part3;
+                    console.log("Profit made is: " + profit); 
+
+
+                     output.innerHTML = build;
+                           
+                }
+                
+            
+                
+
+            </script>
+            </head>
+
+            <body> 
+                 <h3>GOOD FOODS</h3> 
+                <h1> Belgium Bread</h1>
+                <img src = "bread.jpg"> <br>  
+                <span>
+                    $10
+                </span>
+                <p>
+                    Belgium Bread is great to eat everyday. With our local stores in every town,<br> 
+                    shipping will be fast and easy. This bread is toasty on the outside<br>
+                    and soft and warm on the inside.
+                </p>
+                Quantity: <input type = "number" id = "quantity1" value = 0 min = 0 max = 30  >
+                
+
+
+                <h1> Raisin Bread </h1>
+                <img src = "food.jpg"> <br> 
+                <span>
+                    $10
+                </span>
+                <p>
+                   This bread is one of the best in the world. Made in our very own ovens <br>
+                    and no added gmos or chemicals
+                </p><br>
+                Quantity: <input type = "number" id = "quantity2" value = 0 min = 0 max = 30  >
+            
+
+                <h1> Nutella </h1>
+                <img src = "nutella.jpg"> <br>
+                <span>
+                    $10
+                </span>
+                <p>
+                    Best spread to put on your bread
+                </p>
+                Quantity: <input type = "number" id = "quantity3" value = 0 min = 0 max = 30  > <br>
+
+                <div id = "output"><br>
+                
+                <button onclick = "purchase()"> BUY </button>  
+                
+                
+                </div> 
+
+        </body>
+    </html>
